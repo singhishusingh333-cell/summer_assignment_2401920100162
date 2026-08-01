@@ -1,16 +1,15 @@
 class Solution {
 public:
     int minimumPushes(string word) {
-        int result=0;
-        unordered_map<int,int>mp;
-        int key=2;
-        for(char &ch:word){
-            if(key>9){
-                key=2;
-            }
-            mp[key]++;
-            result=result+mp[key];
-            key++;
+         int result=0;
+        vector<int>mp(26,0);
+        for(char ch:word){
+            mp[ch-'a']++;
+        }
+        sort(mp.begin(),mp.end(),greater<int>());
+        for(int i=0;i<26;i++){
+            int press=i/8+1;
+            result=result+mp[i]*press;
         }
         return result;
     }
