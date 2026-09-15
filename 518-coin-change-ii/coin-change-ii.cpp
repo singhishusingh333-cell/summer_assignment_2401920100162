@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int solve(int index,int amount,vector<int>&coins,vector<vector<int>>&dp){
+        if(amount==0)return 1;
+        if(index == coins.size()) {
+            return 0;
+        }
+        //if already found and this condition will always comes after base case
+        if(dp[index][amount]!=-1){
+            return dp[index][amount];
+        }
+        int nottake = solve(index+1,amount,coins,dp);
+        int take=0;
+        if(coins[index]<=amount){
+            take=solve(index,amount-coins[index],coins,dp);
+        } 
+        return dp[index][amount]=take+nottake;
+
+    }
+    int change(int amount, vector<int>& coins) {
+        vector<vector<int>>dp(coins.size(),vector<int>(amount+1,-1));//dp(index=coins.size,,amount)
+        return solve(0,amount,coins,dp);
+    }
+};
