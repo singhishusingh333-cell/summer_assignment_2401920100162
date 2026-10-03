@@ -1,23 +1,23 @@
 class Solution {
 public:
     vector<int> sortEvenOdd(vector<int>& nums) {
-        for (int i = 0; i < nums.size(); i += 2) {
-            for (int j = i + 2; j < nums.size(); j += 2) {
-                if (nums[j] < nums[i]) {
-                    swap(nums[i], nums[j]);
-                }
+        int n=nums.size ();
+        // for the odd index
+        for ( int j=1;j<n-2;j+=2){
+        for (int i=1;i<n-2;i+=2){
+            if (nums[i]<nums[i+2]){
+                swap(nums[i],nums[i+2]);
             }
         }
-
-        // Odd indices → descending
-        for (int i = 1; i < nums.size(); i += 2) {
-            for (int j = i + 2; j < nums.size(); j += 2) {
-                if (nums[j] > nums[i]) {
-                    swap(nums[i], nums[j]);
-                }
+        }
+        //for the even index
+         for ( int j=0;j<n-2;j+=2){
+        for (int i =0;i<n-2;i+=2){
+            if (nums[i]>nums[i+2]){
+                swap(nums[i],nums[i+2]);
             }
         }
-
-        return nums;
+         }
+       return nums; 
     }
 };
