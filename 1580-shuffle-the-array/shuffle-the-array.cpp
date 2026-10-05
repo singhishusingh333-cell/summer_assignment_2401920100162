@@ -1,19 +1,11 @@
 class Solution {
 public:
     vector<int> shuffle(vector<int>& nums, int n) {
-        vector<int>ans;
-        int even=0;
-        int odd= n;
-      for (int i=0;i<(2*n);i++){
-        if (i%2==0){
-           ans.push_back(nums[even]);
-           even++;
-           continue;
+        vector<int> arr;
+        for (int i = 0; i < n; i++) {
+            arr.push_back(nums[i]);
+            arr.push_back(nums[i + n]);
         }
-        ans.push_back(nums[odd]);
-        odd++;
-      }
-      
-      return ans;  
+        return arr;
     }
 };
