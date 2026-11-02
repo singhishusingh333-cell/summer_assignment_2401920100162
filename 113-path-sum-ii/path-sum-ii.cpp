@@ -12,7 +12,7 @@
  */
 class Solution {
 public:
-    void solve(TreeNode* root, int targetsum, vector<int> temp,vector<vector<int>> &ans, int sum) {
+    void solve(TreeNode* root, int targetsum, vector<int> &temp,vector<vector<int>> &ans, int sum) {
           if(root==NULL) {
             return ;
           }
@@ -21,13 +21,13 @@ public:
           if(root->left==NULL&&root->right==NULL){
             if(sum==targetsum){
                 ans.push_back(temp);
-                
+                temp.pop_back();
                 return;
             }
           }
           solve(root->left,targetsum,temp,ans,sum);
-           solve(root->right,targetsum,temp,ans,sum);
-          
+          solve(root->right,targetsum,temp,ans,sum);
+          temp.pop_back();
     }
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
         vector<int> temp;
