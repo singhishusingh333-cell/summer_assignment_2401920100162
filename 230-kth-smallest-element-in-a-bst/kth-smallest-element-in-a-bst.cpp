@@ -12,16 +12,14 @@
 class Solution {
 public:
     void storeinorder(TreeNode* root,vector<int>&arr){
-        if(root==NULL){
-            return;
-        }
+        if(root==NULL) return ;
         storeinorder(root->left,arr);
         arr.push_back(root->val);
         storeinorder(root->right,arr);
     }
     int kthSmallest(TreeNode* root, int k) {
-        vector<int>arr;
-        storeinorder(root,arr);
-        return arr[k-1];
+       vector<int>arr;
+       storeinorder(root,arr);
+       return arr[k-1];
     }
 };
